@@ -13,6 +13,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([
+            PermissionsTableSeeder::class,
+            RolesTableSeeder::class,
+            AdsenseSeeder::class,
+            CategorySeeder::class,
+            PaymentPlatformsSeeder::class,
+            LanguagesSeeder::class,
+            TemplateSeeder::class,
+            VoiceoverLanguagesSeeder::class,
+            VoicesSeeder::class,
+            VendorsSeeder::class,
+            ChatsSeeder::class,
+            FrontendStepSeeder::class,
+            FrontendToolSeeder::class,
+            FrontendFeatureSeeder::class,
+            ChatCategorySeeder::class,
+            ChatPromptSeeder::class,
+        ]);
     }
 }

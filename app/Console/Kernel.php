@@ -13,7 +13,11 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        'App\Console\Commands\SubscriptionCheckTaskCommand',
+        'App\Console\Commands\ImageExpirationCheckTaskCommand',
+        'App\Console\Commands\RenewCreditsTaskCommand',
+        'App\Console\Commands\YookassaSubscriptionTaskCommand',
+        'App\Console\Commands\VideoTaskCommand',
     ];
 
     /**
@@ -24,7 +28,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('subscription:check')->daily();
+        $schedule->command('subscription:renew')->daily();
+        $schedule->command('yookassa:check')->daily();
+        $schedule->command('checkimage:process')->hourly();
+        $schedule->command('video:check')->everyMinute();
     }
 
     /**
